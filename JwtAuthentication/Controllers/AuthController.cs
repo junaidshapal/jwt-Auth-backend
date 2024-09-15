@@ -58,10 +58,18 @@ namespace JwtAuthentication.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel login)
         {
-            var user = await _userManager.FindByNameAsync(login.UserName);
-            var loginResult = await _userManager.CheckPasswordAsync(user, login.Password);
+            // Log the incoming data to make sure it's being received correctly
+            Console.WriteLine($"Username: {login.UserName}, Password: {login.Password}");
 
-            if (user != null && loginResult)
+            var user = await _userManager.FindByNameAsync(login.UserName);
+            if (user == null)
+            {
+                Console.WriteLine("User not found");
+                return Unauthorized();
+            }
+
+            var loginResult = await _userManager.CheckPasswordAsync(user, login.Password);
+            if (loginResult)
             {
                 var authClaims = new[]
                 {
@@ -72,7 +80,7 @@ namespace JwtAuthentication.Controllers
 
                 var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@1234"));
                 var token = new JwtSecurityToken(
-                     issuer: "http://localhost:4200",
+                    issuer: "http://localhost:4200",
                     audience: "http://localhost:4200",
                     expires: DateTime.Now.AddHours(3),
                     claims: authClaims,
@@ -86,7 +94,9 @@ namespace JwtAuthentication.Controllers
                 });
             }
 
+            Console.WriteLine("Invalid credentials");
             return Unauthorized();
         }
+
     }
 }

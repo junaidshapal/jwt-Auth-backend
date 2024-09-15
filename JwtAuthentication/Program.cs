@@ -39,14 +39,15 @@ builder.Services.AddAuthentication(options =>
                 ValidateAudience = false,
                 ClockSkew = TimeSpan.Zero // Remove delay of token when expire
 
-
-
                 //ValidateIssuer = true,
                 //ValidateAudience = true,
                 //ValidateLifetime = true,
                 //ValidateIssuerSigningKey = true,
-                //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("JwtSettings:SecretKey")),
-                //ClockSkew = TimeSpan.Zero 
+                //ValidIssuer = "http://localhost:4200",
+                //ValidAudience = "http://localhost:4200",
+                //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@1234"))
+
+
             };
         });
 
@@ -54,10 +55,10 @@ builder.Services.AddAuthentication(options =>
 // Configure CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
+    options.AddPolicy("AllowAngularApp",
         builder =>
         {
-            builder.AllowAnyOrigin()
+            builder.WithOrigins("http://localhost:4200")
                    .AllowAnyMethod()
                    .AllowAnyHeader();
         });
@@ -79,7 +80,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCors("AllowAll");
+app.UseCors("AllowAngularApp");
 
 
 app.UseEndpoints(endpoints =>
