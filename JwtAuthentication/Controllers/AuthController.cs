@@ -25,6 +25,8 @@ namespace JwtAuthentication.Controllers
             _config = config;
         }
 
+
+        //Register Method for JWT Authentication
         [HttpPost("register")]
 
         public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
@@ -54,6 +56,7 @@ namespace JwtAuthentication.Controllers
 
         }
 
+        //Login Method for JWT Authentication
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel login)
