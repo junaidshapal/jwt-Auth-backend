@@ -26,7 +26,7 @@ namespace JwtAuthentication.Controllers
         }
 
 
-        //Register Method for JWT Authentication
+        //Register Method for JWT Authentication in simple project
         [HttpPost("register")]
 
         public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
