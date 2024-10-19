@@ -38,16 +38,6 @@ builder.Services.AddAuthentication(options =>
                 ValidateIssuer = false,
                 ValidateAudience = false,
                 ClockSkew = TimeSpan.Zero // Remove delay of token when expire
-
-                //ValidateIssuer = true,
-                //ValidateAudience = true,
-                //ValidateLifetime = true,
-                //ValidateIssuerSigningKey = true,
-                //ValidIssuer = "http://localhost:4200",
-                //ValidAudience = "http://localhost:4200",
-                //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@1234"))
-
-
             };
         });
 

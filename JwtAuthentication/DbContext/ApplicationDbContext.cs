@@ -10,5 +10,5 @@ namespace JwtAuthentication.DbContext
         {
         
         }
-    }
+    }       
 }
