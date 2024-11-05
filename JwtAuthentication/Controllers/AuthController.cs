@@ -61,7 +61,7 @@ namespace JwtAuthentication.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel login)
         {
-            // Log the incoming data to make sure it's being received correctly
+            //// Log the incoming data to make sure it's being received correctly
             //Console.WriteLine($"Username: {login.UserName}, Password: {login.Password}");
 
             var user = await _userManager.FindByNameAsync(login.UserName);
