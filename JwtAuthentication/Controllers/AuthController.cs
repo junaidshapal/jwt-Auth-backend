@@ -91,11 +91,11 @@ namespace JwtAuthentication.Controllers
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
 
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
-                });
+                //return Ok(new
+                //{
+                //    token = new JwtSecurityTokenHandler().WriteToken(token),
+                //    expiration = token.ValidTo
+                //});
             }
 
             Console.WriteLine("Invalid credentials");
