@@ -74,6 +74,7 @@ namespace JwtAuthentication.Controllers
             var loginResult = await _userManager.CheckPasswordAsync(user, login.Password);
             if (loginResult)
             {
+                //Auth claims used in JWT authentication
                 var authClaims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
