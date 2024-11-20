@@ -9,7 +9,7 @@ namespace JwtAuthentication.DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options) : base (options) 
         {
-        
+        //All of the other tables here
         }
     }       
 }
