@@ -86,7 +86,7 @@ namespace JwtAuthentication.Controllers
                 var token = new JwtSecurityToken(
                     issuer: "http://localhost:4200",
                     audience: "http://localhost:4200",
-                    expires: DateTime.Now.AddHours(4),
+                    expires: DateTime.Now.AddHours(3),
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
